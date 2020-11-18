@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-echo "Configuring..."
+echo "Configuring ..."
 stow -vt ~ tmux vim
-vim +'PlugInstall --sync' +qa
+echo "Installing vundle ..."
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 2> /dev/null
+echo "Setup vim ..."
+vim +'PluginInstall' +'qa!'
 echo "Done!"
 

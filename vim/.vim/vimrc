@@ -1,0 +1,93 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" colorschemes
+Plugin 'tomasiser/vim-code-dark'
+
+" text manipulation
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'jiangmiao/auto-pairs'
+
+" language support
+Plugin 'rust-lang/rust.vim'
+
+" lint
+Plugin 'dense-analysis/ale'
+Plugin 'leafgarland/typescript-vim'
+
+" else
+Plugin 'kien/ctrlp.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+colorscheme codedark
+
+syntax on           " enable syntax processing
+
+" spaces
+set tabstop=2       " number of visual spaces per TAB
+set softtabstop=2   " number of spaces in tab when editing
+set shiftwidth=0
+set expandtab       " tabs are spaces
+
+set number              " show line numbers
+set relativenumber
+set path+=**
+set autoindent
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+set showmatch           " highlight matching [{()}]
+
+" searching
+set incsearch           " search as characters are entered
+set ignorecase          " Ignore case in searches by default
+set smartcase           " But make it case sensitive if an uppercase is entered
+
+set backspace=indent,eol,start
+set hidden
+set mouse+=a
+set noerrorbells visualbell t_vb=
+set laststatus=2
+
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
+" ...and in insert mode
+inoremap <Left>  <ESC>:echoe "Use h"<CR>
+inoremap <Right> <ESC>:echoe "Use l"<CR>
+inoremap <Up>    <ESC>:echoe "Use k"<CR>
+inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+" ALE
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
+
+" rust
+let g:rustfmt_autosave = 1
+

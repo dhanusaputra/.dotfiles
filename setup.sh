@@ -12,8 +12,7 @@ echo "Configuring ${packages[*]}..."
 stow -vt ~ "${packages[@]}"
 
 if [[ ${packages[*]} == *"vim"*  ]]; then
-  if [ ! -d ~/.vim/bundle/Vundle.vim ]
-  then
+  if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
     echo "Installing vundle..."
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   fi

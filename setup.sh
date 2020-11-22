@@ -2,18 +2,16 @@
 
 set -e
 
-packages="tmux vim git"
+packages=(tmux vim git)
 
-if [ ! -z "$@"  ]
-then
-  packages=$@
+if [ ! $# -eq 0  ]; then
+  packages=("$@")
 fi
 
-echo "Configuring $packages..."
-stow -vt ~ $packages
+echo "Configuring ${packages[*]}..."
+stow -vt ~ "${packages[@]}"
 
-if [[ $packages == *"vim"*  ]]
-  then
+if [[ ${packages[*]} == *"vim"*  ]]; then
   if [ ! -d ~/.vim/bundle/Vundle.vim ]
   then
     echo "Installing vundle..."
@@ -23,8 +21,7 @@ if [[ $packages == *"vim"*  ]]
   vim +'PluginInstall' +'qa!'
 fi
 
-if [[ $packages == *"git"*  ]]
-then
+if [[ ${packages[*]} == *"git"*  ]]; then
   echo "Setup git..."
   git config --global core.excludesfile ~/.gitignore_global
 fi

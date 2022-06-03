@@ -57,9 +57,10 @@ set number              " show line numbers
 set relativenumber
 set path+=**
 set autoindent
-set showcmd             " show command in bottom bar
-set cursorline          " highlight current line
-set showmatch           " highlight matching [{()}]
+set showcmd                         " show command in bottom bar
+set cursorline                      " highlight current line
+set showmatch                       " highlight matching [{()}]
+set clipboard=unnamed,unnamedplus   " copy to clipboard when yank
 
 " searching
 set incsearch           " search as characters are entered
@@ -85,7 +86,7 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
+\   'typescript': ['eslint']
 \}
 
 " rust

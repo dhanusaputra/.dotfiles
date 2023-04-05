@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-# prepending commit message.
+# prepend commit message with branch name (branch name format separated with dash)
+
 if [ -z "$BRANCHES_TO_SKIP" ]; then
   BRANCHES_TO_SKIP=(master main develop release)
 fi
 
-BRANCH_NAME=$(git symbolic-ref --short HEAD)
+BRANCH_NAME=$(git symbolic-ref --short HEAD | sed "s/-/ /g")
 BRANCH_NAME="${BRANCH_NAME##*/}"
 
 BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")

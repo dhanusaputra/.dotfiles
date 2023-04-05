@@ -23,7 +23,7 @@ fi
 if [[ ${packages[*]} == *"git"*  ]]; then
   echo "Setup git..."
   git config --global core.excludesfile ~/.gitignore_global
+  git config --global init.templatedir ~/.git_template
 fi
 
 echo "Done!"
-

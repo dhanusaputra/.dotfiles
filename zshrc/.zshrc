@@ -31,6 +31,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(~/.zsh/zsh-completions/src $fpath)
 
 if command -v tmux &> /dev/null && [ -z "$TMUX"  ]; then
-  tmux attach -t default || tmux new -s default
+  tmux attach || tmux new -s default -As "$(basename $(tty))" 'neofetch; bash'
 fi
 
